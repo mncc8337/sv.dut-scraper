@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import time
 import helper
+from scraper import Scraper
 
 STARTING_WEEK = 6
 STARTING_DATE_TS = 1757264400
@@ -15,4 +16,6 @@ load_dotenv()
 usr = os.getenv("USERNAME")
 passwd = os.getenv("PASSWORD")
 
-helper.pull_data(usr, passwd)
+scraper = Scraper(usr, passwd)
+scraper.login()
+scraper.get_schedule(True)
